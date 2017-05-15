@@ -1,5 +1,5 @@
 # angular-tree-products-crud
-Tree of products with features:
+Tree features:
   - Filter displaying only the nodes that contain the search term and all their parents so that it maintains a hierarchy;
   - When deleting a node all children are removed;
   - When registering or editing a node, code, description and observation fields can be informed and only code and description are required;
