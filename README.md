@@ -14,6 +14,8 @@
  
  - Bower (npm install -g bower)
  
+ - Git (https://git-scm.com/)
+ 
 # Running
 
 $ npm install http-server -g
