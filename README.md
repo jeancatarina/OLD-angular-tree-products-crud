@@ -25,5 +25,7 @@ $ cd angular-tree-products-crud
 
 $ http-server -a localhost
 
+Running: http://localhost:8080/#!/
+
 ![alt text](https://github.com/jeancatarina/angular-tree-products-crud/blob/master/gifs/arvore.gif)
 ![alt text](https://github.com/jeancatarina/angular-tree-products-crud/blob/master/gifs/incluir.gif)
