@@ -17,7 +17,11 @@ Tree of products with features:
 
 $ npm install http-server -g
 
-$ cd MyApp
+choose a directory, 
+
+$ git clone https://github.com/jeancatarina/angular-tree-products-crud.git
+
+$ cd angular-tree-products-crud
 
 $ http-server -a localhost
 
