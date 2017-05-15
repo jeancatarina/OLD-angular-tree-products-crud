@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br" ng-app="smartTree">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Árvore de Produtos </title>
+    <!-- CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/angular-tree-control/css/tree-control.css" rel="stylesheet">
+    <!-- CSS Custom -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- Se estiver carregando, loading em tela -->
+    <div ng-if="loading">
+            Carregando...
+    </div>
+
+    <!-- Quando a página carregar mostra a view referente a rota -->
+    <div ng-hide="loading">
+        <div ng-view></div>
+    </div>
+
+    <!-- Dependências -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <!-- Componentes -->
+    <script src="bower_components/angular-tree-control/angular-tree-control.js"></script>
+
+    <!-- Minha aplicação -->
+    <script src="src/app.js"></script>
+    <script src="src/config/route.config.js"></script>
+    <script src="src/controller/arvore.controller.js"></script>
+    <script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<div class="modal fade addProductModel" 
+     tabindex="-1" 
+     role="dialog" 
+     aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <!-- Cabeçalho do Modal -->
+            <div class="modal-header">
+                <button type="button" 
+                        class="close" 
+                        data-dismiss="modal" 
+                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"
+                    ng-if="controller.addProductModal">Adicionar Produto</h4>
+                <h4 class="modal-title"
+                    ng-if="!controller.addProductModal">Editar Produto</h4>
+                
+            </div>
+            <!-- Corpo do Modal -->
+            <div class="modal-body">
+                <!-- Div que aparece somente quando o usuário seleciona um elemento na árvore -->
+                <div class="row" id="hasSonDiv" ng-if="selected && controller.addProductModal">
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                        <p>Criando um filho do:</p>
+                        <span class="tag label label-info">
+                            <span>{{selected.descricao}}</span>
+                            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"
+                                  ng-click="iAmNotYourFather()"
+                            ></i></a>
+                        </span>
+                    </div>
+                </div>
+                <!-- Características do Produto para incluir -->
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                        <p>Descreva as características do seu produto para incluir em sua árvore.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-2 col-md-2 col-lg-2">
+                        <label class="mandatory" for="productCode">Código</label>
+                        <input type="number" 
+                               min="1"                               
+                               step="1"
+                               ng-model="controller.clothing.codigo" 
+                               class="form-control" 
+                               name="productCode">
+                    </div>
+                    <div class="form-group col-sm-6 col-md-6 col-lg-6">
+                        <label class="mandatory" for="productDescription">Descrição</label>
+                        <input type="text" 
+                               ng-bind="selected.descricao"
+                               ng-model="controller.clothing.descricao" 
+                               class="form-control" 
+                               name="productDescription" 
+                               placeholder="Descrição">
+                    </div>
+                </div>
+                <label for="productObservation">Observação</label>
+                <textarea rows="5" 
+                          ng-model="controller.clothing.observacao" 
+                          name="productObservation" 
+                          class="form-control"></textarea>
+            </div>
+
+            <!-- Botões de Rodapé -->
+            <div class="modal-footer">
+                <!-- Incluir -->
+                <button type="button" 
+                        class="btn btn-modal green-add" 
+                        ng-disabled="!controller.clothing.codigo || !controller.clothing.descricao"
+                        data-dismiss="modal" 
+                        ng-if="controller.addProductModal"
+                        onclick="$('.addProductModel').modal('hide')"
+                        ng-click="addProduct(controller.clothing)">Incluir</button>
+                <!-- Editar -->
+                <button type="button" 
+                        class="btn btn-modal green-add" 
+                        ng-disabled="!controller.clothing.codigo || !controller.clothing.descricao"
+                        data-dismiss="modal" 
+                        ng-if="!controller.addProductModal"
+                        onclick="$('.addProductModel').modal('hide')"
+                        ng-click="editProduct(controller.clothing)">Editar</button>
+                <!-- Salvar -->
+                <button type="button" 
+                        ng-disabled="!controller.clothing.codigo || !controller.clothing.descricao"
+                        class="btn btn-modal green-save" 
+                        data-toggle="tooltip" 
+                        data-placement="top" 
+                        ng-if="controller.addProductModal"
+                        ng-click="addProduct(controller.clothing)"
+                        title="Clique aqui para incluir um produto sem a tela se fechar">Salvar</button>
+                <!-- Cancelar -->
+                <button type="button" 
+                        class="btn btn-modal red" 
+                        data-dismiss="modal">Cancelar</button>                        
+            </div>
+        </div>
+    </div>
+</div>

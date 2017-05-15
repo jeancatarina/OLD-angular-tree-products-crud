@@ -1,0 +1,117 @@
+#boxTree{
+    width: 400px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-default, .btn-default:hover, .btn-default:focus{
+     border-color: #fff;
+}
+
+.btn-modal {
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  display: inline-block;
+}
+.btn:focus,.btn:active {
+   outline: none !important;
+   background-color: #fff;
+}
+.btn:hover{
+    background-color: #99c63e;
+    color: #fff;
+}
+.green-add {
+  color: #fff;
+  background-color: #2ecc71;
+  border: 2px #2ecc71 solid;
+}
+.green-save{
+    background-color: #fff;
+    color: #2ecc71;
+    border-color: #fff;
+}
+
+.red {
+  color: #e74c3c;
+  background-color: #fff;
+}
+
+h1, h2, h3, label{
+    color: #2ecc71;
+}
+.titleStructures{
+    color: #99c63e;
+}
+/* Distancia entre o search e os buttons para estética */
+#searchInput{
+    margin-top: 10px;
+}
+/*Cor quando seleciono um produto na árvore*/
+.tree-selected {
+    color: #99c63e;
+}
+h4.modal-title{
+    text-align: center;
+}
+.modal-header {
+    background-color: #2ecc71;
+    color: #fff;
+    font-weight: bold;
+}
+
+/*badge*/
+.tag {
+  font-size: 14px;
+  padding: 5px;
+  margin: 0 .1em;
+}
+.tag a {
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.tag a:hover {
+  opacity: 1.0
+}
+.tag .remove {
+  vertical-align: bottom;
+  top: 0;
+}
+.tag a {
+  margin: 0 0 0 .3em;
+}
+.tag a .glyphicon-white {
+  color: #fff;
+  margin-bottom: 2px;
+}
+.modal-content {
+    border-bottom-left-radius: 42px;
+    border-bottom-right-radius: 42px;
+    border-top-left-radius: 43px;
+}
+.modal-header{
+    border-top-left-radius: 42px;
+}
+.mandatory::after{
+    content: "*";
+    color: red;
+}
+
+h3.popover-title {
+    background-color: #3ec655;
+    color: #fff;
+}
+.popover.right {
+    margin-left: 26px;
+}
+.popover{
+    background-color: rgba(255, 255, 255, 0.62);
+}
