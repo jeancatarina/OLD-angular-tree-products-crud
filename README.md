@@ -1,6 +1,18 @@
 # angular-tree-products-crud
-I created a tree of products with have a CRUD
+Tree of products with features:
+  - Filter displaying only the nodes that contain the search term and all their parents so that it maintains a hierarchy;
+  - When deleting a node all children are removed;
+  - When registering or editing a node, code, description and observation fields can be informed and only code and description are required;
+  - No limits of levels and registered nodes;
+  - In the tree view it only shows the description of the nodes and when placing the mouse on a node it displayed a tooltip with the code, the description and the observation of the node;
+  - You can expand and close each node and also expand and close all nodes at the same time;
+  
+# Requirements
 
+ - NodeJS (https://nodejs.org/en/)
+ 
+ - Bower (npm install -g bower)
+ 
 # Running
 
 $ npm install http-server -g
