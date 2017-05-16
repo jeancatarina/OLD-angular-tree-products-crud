@@ -49,13 +49,19 @@
                 label: "a6",
                 labelSelected: "a8"
             }
-        }
+        };
 
         //Carrega o código ao adicionar um novo item
         $scope.carregaAdd = function(selected){
             self.clothing = [];
-            if($scope.selected != undefined){                
-                self.clothing.codigo = $scope.selected.codigo + 1;
+            if($scope.selected != undefined){  
+				var subProduto;
+				if($scope.selected.children != undefined){
+					subProduto = $scope.selected.children.length + 1;
+				}else{
+					subProduto = "1";
+				};
+                self.clothing.codigo = $scope.selected.codigo.toString() + "." + subProduto.toString();
             }else{
                 self.clothing.codigo = $scope.clothings.length + 1;
             }
@@ -173,29 +179,29 @@
         $scope.clothings = [
             // Pai de todos
             {
-                codigo: 1,
+                codigo: "1",
                 descricao: "Campos Confecções",
                 observacao: "Todas confeções de nossa empresa",
                 children: [
                     {
-                        codigo: 2,
+                        codigo: "1.1",
                         descricao: "Bermudas",
                         observacao: "Todas bermudas de nossa empresa",
                         children: []
                     },
                     {
-                        codigo: 3,
+                        codigo: "1.2",
                         descricao: "Calças",
                         observacao: "Todas calças de nossa empresa",
                         children: [
                             {
-                                codigo: 4,
+                                codigo: "1.2.1",
                                 descricao: "Sarja (m)",
                                 observacao: "Todas calças sarja de nossa empresa",
                                 children: []
                             },
                             {
-                                codigo: 5,
+                                codigo: "1.2.2",
                                 descricao: "Social",
                                 observacao: "Todas calças sociais de nossa empresa",
                                 children: []
@@ -203,29 +209,29 @@
                         ]// Filhos das calças
                     },
                     {
-                        codigo: 6,
+                        codigo: "1.3",
                         descricao: "Camisas",
                         observacao: "Todas camisas de nossa empresa",
                         children: [
                             {
-                                codigo: 7,
+                                codigo: "1.3.1",
                                 descricao: "Esporte",
                                 observacao: "Todas camisas esporte de nossa empresa",
                                 children: []
                             },
                             {
-                                codigo: 8,
+                                codigo: "1.3.2",
                                 descricao: "Gola Polo",
                                 observacao: "Todas camisas Gola Polo de nossa empresa",
                                 children: []
                             },
                             {
-                                codigo: 9,
+                                codigo: "1.3.3",
                                 descricao: "Grife",
                                 observacao: "Todas camisas de grife de nossa empresa",
                                 children: [
                                     {
-                                        codigo: 10,
+                                        codigo: "1.3.3.1",
                                         descricao: "BOSS",
                                         observacao: "Todas camisas BOSS de nossa empresa",
                                         children: []
@@ -233,7 +239,7 @@
                                 ]// Filhos das Grifes
                             },
                             {
-                                codigo: 11,
+                                codigo: "1.3.4",
                                 descricao: "Social",
                                 observacao: "Todas camisas sociais de nossa empresa",
                                 children: []
@@ -241,7 +247,7 @@
                         ]// Filhos das camisas
                     },
                     {
-                        codigo: 12,
+                        codigo: "1.4",
                         descricao: "Terno",
                         observacao: "Todos ternos de nossa empresa",
                         children: []
