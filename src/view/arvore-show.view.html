@@ -1,4 +1,4 @@
-<div id="boxTree">
+<div id="boxTree">    
     <h3 class="titleStructures">Produtos</h1>
     <!-- Botões da pesquisa esquerdos (mortadelas) -->
     <!-- Adicionar -->
@@ -6,7 +6,7 @@
             class="btn btn-default" 
             data-toggle="modal" 
             data-target=".addProductModel" 
-            ng-click="controller.addProductModal = true"
+            ng-click="controller.addProductModal = true; carregaAdd(selected)"
             aria-label="Left Align">            
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
@@ -44,7 +44,7 @@
     </button>
     <!-- Pesquisa -->
     <input type="text" id="searchInput" class="form-control" ng-model="predicate" placeholder="Digite para filtrar">
-    {{predicate}}
+    
     <!-- Árvore hierárquica -->
     <treecontrol class="tree-light"
     tree-model="clothings"

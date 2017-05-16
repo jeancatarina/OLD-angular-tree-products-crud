@@ -41,7 +41,7 @@
                         <label class="mandatory" for="productCode">Código</label>
                         <input type="number" 
                                min="1"                               
-                               step="1"
+                               step="0.1"
                                ng-model="controller.clothing.codigo" 
                                class="form-control" 
                                name="productCode">
@@ -55,6 +55,7 @@
                                name="productDescription" 
                                placeholder="Descrição">
                     </div>
+
                 </div>
                 <label for="productObservation">Observação</label>
                 <textarea rows="5" 
@@ -93,6 +94,7 @@
                 <!-- Cancelar -->
                 <button type="button" 
                         class="btn btn-modal red" 
+                        ng-click="cancelEdit(controller)"
                         data-dismiss="modal">Cancelar</button>                        
             </div>
         </div>

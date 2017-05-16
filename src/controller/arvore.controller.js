@@ -27,6 +27,10 @@
                 html: true
             });
         });
+        //Alerta
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+            $("#success-alert").slideUp(500);
+        });
 
         // Váriavel self passa a ser o controller
         var self = this;
@@ -47,9 +51,18 @@
             }
         }
 
+        //Carrega o código ao adicionar um novo item
+        $scope.carregaAdd = function(selected){
+            self.clothing = [];
+            if($scope.selected != undefined){                
+                self.clothing.codigo = $scope.selected.codigo + 1;
+            }else{
+                self.clothing.codigo = $scope.clothings.length + 1;
+            }
+        }
         // Adiciona um nó a árvore, podendo ser pai ou filho
         $scope.addProduct = function (clothing) {
-            var clothingCopy = angular.copy(clothing);
+            var clothingCopy = clothing.$$hashKey != undefined? angular.copy(clothing)  : clothing;
             var clothingObject = {
                 codigo: clothingCopy.codigo,
                 descricao: clothingCopy.descricao,
@@ -59,20 +72,31 @@
 
             if ($scope.selected != undefined) {
                 $scope.selected.children.push(clothingObject);
+                $scope.expandedNodes.push($scope.selected);
             } else {
                 $scope.clothings.push(clothingObject);
+                $scope.expandedNodes.push($scope.clothings);
             }
-
+            
             delete self.clothing;
         };
 
+        // Alimenta o editar com as informações do node selecionado
         $scope.carregaEdit = function(selected){
-            
+            self.clothing = [];        
+            self.clothing.codigo = selected.codigo;
+            self.clothing.descricao = selected.descricao;
+            self.clothing.observacao = selected.observacao;
+            self.clothing.children = selected.children;
+        }
+
+        $scope.cancelEdit = function(controller){
+            delete controller.clothing;
         }
 
         // Adiciona um nó a árvore, podendo ser pai ou filho
         $scope.editProduct = function (clothing) {
-            var clothingCopy = angular.copy(clothing);
+            var clothingCopy = clothing;
             var treeControlArray;
 
             var clothingObject = {
@@ -227,30 +251,24 @@
 
             // Expandir todos filhos da árvore
             $scope.expandAll = function () {
-                $scope.expandedNodes = [];
-                $scope.expandedNodes.push($scope.clothings[0]);
-                $scope.clothings[0].children.forEach(function (element) {
-                    $scope.expandedNodes.push(element);
-                }, this);
-                $scope.expandedNodes.push($scope.clothings[0].children[2].children[2]);
 
-                /////////
-                
-                // Verifica todos pais e expandi eles
-                for (var i = 0; i < $scope.clothings.length; i++) {
-                    $scope.expandedNodes.push($scope.clothings[i]);                    
-                    //Esse pai tem filho?
-                    if($scope.clothings[i].children != undefined){
-                        //percorre todos os filhos e expandi eles
-                        for (var i = 0; i < $scope.clothings[i].children.length; i++) {
-                            $scope.expandedNodes.push($scope.clothings[i].children[i]);
-                            
-                        }
-
+                self.allNodes = [];
+                self.addToAllNodes = function(children) {
+                    //verifica se children ta vindo vazio
+                    if (!children || typeof (children) == "array" && children.length == 0) {
+                        return;
+                    }      
+                    //percorre todos filhos
+                    for (var i = 0; i < children.length; i++) {
+                        if(children[i].children.length > 0){
+                                self.allNodes.push(children[i]);
+                                self.addToAllNodes(children[i].children);
+                            }
                     }
                 }
 
-
+                self.addToAllNodes($scope.clothings);
+                $scope.expandedNodes = self.allNodes;
 
             };
 
@@ -295,6 +313,15 @@
             $scope.showSelected = function (node, $parentNode) {
                 $scope.$parentNode = $parentNode;
             };
+
+            //expande a árvore ao filtrar
+            $scope.$watch('predicate', function(newFilter) {
+                if (newFilter && newFilter.length > 1) {
+                    $scope.expandAll();
+                } else {
+                    $scope.expandedItems = [];
+                }
+            });
             
     }; //function arvoreController(self) {
 
