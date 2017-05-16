@@ -16,9 +16,9 @@
  
  - Git (https://git-scm.com/)
  
+ - $ npm install http-server -g
+ 
 # Running
-
-$ npm install http-server -g
 
 choose a directory, 
 
