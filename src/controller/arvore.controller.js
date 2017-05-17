@@ -64,8 +64,8 @@
                 self.clothing.codigo = $scope.selected.codigo.toString() + "." + subProduto.toString();
             }else{
                 self.clothing.codigo = $scope.clothings.length + 1;
-            }
-        }
+            };
+        };
         // Adiciona um nó a árvore, podendo ser pai ou filho
         $scope.addProduct = function (clothing) {
             var clothingCopy = clothing.$$hashKey != undefined? angular.copy(clothing)  : clothing;
@@ -82,7 +82,7 @@
             } else {
                 $scope.clothings.push(clothingObject);
                 $scope.expandedNodes.push($scope.clothings);
-            }
+            };
             
             delete self.clothing;
         };
@@ -94,11 +94,11 @@
             self.clothing.descricao = selected.descricao;
             self.clothing.observacao = selected.observacao;
             self.clothing.children = selected.children;
-        }
+        };
 
         $scope.cancelEdit = function(controller){
             delete controller.clothing;
-        }
+        };
 
         // Adiciona um nó a árvore, podendo ser pai ou filho
         $scope.editProduct = function (clothing) {
@@ -143,8 +143,8 @@
 
                             $scope.selected = undefined;                            
                             break;
-                        }                                  
-                    }
+                        };                         
+                    };
                 }else{
                     for (var i = 0; i < $scope.$parentNode.children.length; i++) {
                         var element = $scope.$parentNode.children[i];
@@ -169,11 +169,11 @@
         $scope.buttonClick = function($event, node) {
             $scope.lastClicked = node;
             $event.stopPropagation();
-        }
+        };
 
         $scope.iAmNotYourFather = function () {
             $scope.selected = undefined;
-        }
+        };
 
         // Produtos Default
         $scope.clothings = [
@@ -263,15 +263,15 @@
                     //verifica se children ta vindo vazio
                     if (!children || typeof (children) == "array" && children.length == 0) {
                         return;
-                    }      
+                    };      
                     //percorre todos filhos
                     for (var i = 0; i < children.length; i++) {
                         if(children[i].children.length > 0){
                                 self.allNodes.push(children[i]);
                                 self.addToAllNodes(children[i].children);
-                            }
-                    }
-                }
+                        };
+                    };
+                };
 
                 self.addToAllNodes($scope.clothings);
                 $scope.expandedNodes = self.allNodes;
@@ -299,8 +299,8 @@
                             $scope.clothings.splice(i,1);
                             $scope.selected = undefined;
                             break;
-                        }                                  
-                    }
+                        };                                  
+                    };
                 }else{
                     for (var i = 0; i < $scope.$parentNode.children.length; i++) {
                         var element = $scope.$parentNode.children[i];
@@ -309,9 +309,9 @@
                             $scope.$parentNode.children.splice(i,1);
                             $scope.selected = undefined;
                             break;
-                        }                    
-                    }
-                }       
+                        };                   
+                    };
+                };       
                 
             };
 
@@ -326,7 +326,7 @@
                     $scope.expandAll();
                 } else {
                     $scope.expandedItems = [];
-                }
+                };
             });
             
     }; //function arvoreController(self) {
