@@ -26,6 +26,10 @@ $ git clone https://github.com/jeancatarina/angular-tree-products-crud.git
 
 $ cd angular-tree-products-crud
 
+$ bower install
+
+$ npm install
+
 $ http-server -a localhost
 
 Running: http://localhost:8080/#!/
