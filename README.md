@@ -22,17 +22,18 @@
 
 choose a directory, 
 
-$ git clone https://github.com/jeancatarina/angular-tree-products-crud.git
+- $ git clone https://github.com/jeancatarina/angular-tree-products-crud.git
 
-$ cd angular-tree-products-crud
+- $ cd angular-tree-products-crud
 
-$ bower install
+- $ bower install
 
-$ npm install
+- $ npm install
 
-$ http-server -a localhost
+- $ http-server -a localhost
 
-Running: http://localhost:8080/#!/
+- Running: http://localhost:8080/#!/
 
+# Preview
 ![alt text](https://github.com/jeancatarina/angular-tree-products-crud/blob/master/gifs/arvore.gif)
-![alt text](https://github.com/jeancatarina/angular-tree-products-crud/blob/master/gifs/incluir.gif)
+![alt text](https://github.com/jeancatarina/angular-tree-products-crud/blob/master/gifs/inclusaosalvar.gif)
