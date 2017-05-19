@@ -36,31 +36,35 @@
                         <p>Descreva as características do seu produto para incluir em sua árvore.</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-sm-2 col-md-2 col-lg-2">
-                        <label class="mandatory" for="productCode">Código</label>
-                        <input type="text" 
-                               ng-model="controller.clothing.codigo" 
-                               class="form-control" 
-                               ng-disabled="true"
-                               name="productCode">
-                    </div>
-                    <div class="form-group col-sm-6 col-md-6 col-lg-6">
-                        <label class="mandatory" for="productDescription">Descrição</label>
-                        <input type="text" 
-                               ng-bind="selected.descricao"
-                               ng-model="controller.clothing.descricao" 
-                               class="form-control" 
-                               name="productDescription" 
-                               placeholder="Descrição">
-                    </div>
+                <form name="formProduct">
+                    <div class="row">
+                        <div class="form-group col-sm-2 col-md-2 col-lg-2">
+                            <label class="mandatory" for="productCode">Código</label>
+                            <input type="text" 
+                                ng-model="controller.clothing.codigo" 
+                                class="form-control" 
+                                ng-required="true"
+                                ng-disabled="true"
+                                name="productCode">
+                        </div>
+                        <div class="form-group col-sm-6 col-md-6 col-lg-6">
+                            <label class="mandatory" for="productDescription">Descrição</label>
+                            <input type="text" 
+                                ng-bind="selected.descricao"
+                                ng-model="controller.clothing.descricao" 
+                                ng-required="true"
+                                class="form-control" 
+                                name="productDescription" 
+                                placeholder="Descrição">
+                        </div>
 
-                </div>
-                <label for="productObservation">Observação</label>
-                <textarea rows="5" 
-                          ng-model="controller.clothing.observacao" 
-                          name="productObservation" 
-                          class="form-control"></textarea>
+                    </div>
+                    <label for="productObservation">Observação</label>
+                    <textarea rows="5" 
+                            ng-model="controller.clothing.observacao" 
+                            name="productObservation" 
+                            class="form-control"></textarea>
+                </form>
             </div>
 
             <!-- Botões de Rodapé -->
@@ -68,7 +72,7 @@
                 <!-- Incluir -->
                 <button type="button" 
                         class="btn btn-modal green-add" 
-                        ng-disabled="!controller.clothing.codigo || !controller.clothing.descricao"
+                        ng-disabled="formProduct.$invalid"
                         data-dismiss="modal" 
                         ng-if="controller.addProductModal"
                         onclick="$('.addProductModel').modal('hide')"
@@ -76,14 +80,14 @@
                 <!-- Editar -->
                 <button type="button" 
                         class="btn btn-modal green-add" 
-                        ng-disabled="!controller.clothing.codigo || !controller.clothing.descricao"
+                        ng-disabled="formProduct.$invalid"
                         data-dismiss="modal" 
                         ng-if="!controller.addProductModal"
                         onclick="$('.addProductModel').modal('hide')"
                         ng-click="editProduct(controller.clothing)">Editar</button>
                 <!-- Salvar -->
                 <button type="button" 
-                        ng-disabled="!controller.clothing.codigo || !controller.clothing.descricao"
+                        ng-disabled="formProduct.$invalid"
                         class="btn btn-modal green-save" 
                         ng-if="controller.addProductModal"
                         ng-click="addProduct(controller.clothing); carregaAdd()">Salvar</button>
